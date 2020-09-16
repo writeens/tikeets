@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { startFetchEvents } from '../redux/events';
 import Sidebar from './Sidebar';
 
@@ -8,6 +8,7 @@ const EventDetail = () => {
   // Hooks
   const events = useSelector((state) => state.events.fetch.data);
   const dispatch = useDispatch();
+  const history = useHistory();
   const { id } = useParams();
 
   // Application State
@@ -31,6 +32,11 @@ const EventDetail = () => {
       setShortDesc(event.shortDesc);
       setLocation(event.location);
     }
+  };
+
+  /** Navigate to Reserve Tickets page */
+  const handleClick = () => {
+    history.push(`/event/${id}/reserve`);
   };
 
   useEffect(() => {
@@ -62,6 +68,7 @@ const EventDetail = () => {
               <button
                 type="button"
                 className="rounded text-sm border-0 bg-blue-900 text-white py-2 px-8 cursor-pointer"
+                onClick={handleClick}
               >
                 Reserve Ticket(s)
 

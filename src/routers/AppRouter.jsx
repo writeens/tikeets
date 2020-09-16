@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Login from '../components/Login';
 import Home from '../components/Home';
 import EventDetail from '../components/EventDetail';
+import ReserveTicket from '../components/ReserveTicket';
 
 // Routes Config
 const routes = [
@@ -19,6 +20,11 @@ const routes = [
   {
     routePath: '/event/:id',
     routeComponent: EventDetail,
+    exact: true,
+  },
+  {
+    routePath: '/event/:id/reserve',
+    routeComponent: ReserveTicket,
     exact: true,
   },
 ];
