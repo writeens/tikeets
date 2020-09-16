@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import styles from './Login.module.css';
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
 
 const Login = () => {
   const [showSignUp, setShowSignUp] = useState(false);
 
+  /** Switch between sign in and sign up forms */
   const toggleView = (viewClicked) => {
     if (viewClicked === 'signUp') {
       return setShowSignUp(true);
@@ -13,7 +13,7 @@ const Login = () => {
     return setShowSignUp(false);
   };
   return (
-    <div className="flex flex-row absolute inset-0">
+    <div className="flex bg-gray-100 flex-row absolute inset-0">
       <div className="w-2/5 flex flex-col justify-center items-center">
         <p className="my-4 text-6xl font-bold text-blue-900">Tikeets</p>
         <p className="text-center text-blue-900">A ticket booking/reservation and event management platform.</p>
