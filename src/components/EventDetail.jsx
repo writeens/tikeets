@@ -117,10 +117,6 @@ const EventDetail = () => {
     // eslint-disable-next-line
   }, [tickets, events]);
 
-  const renderTickets = () => {
-
-  };
-
   return (
     <div className="text-blue-900 relative bg-gray-100 flex flex-col min-h-screen">
       <Sidebar />
