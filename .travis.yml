@@ -1,9 +1,11 @@
 language: node_js
 node_js:
-  - 8
+  - "stable"
 cache:
   directories:
     - node_modules
 script:
+  - npm test -- --coverage
   - npm run build
-  - npm test
+after_script: # Upload coverage reports 
+  - COVERALLS_REPO_TOKEN=rTqe21yrKEen5E6GX1Vd1CuwVKs1oQJU1 npm run coveralls
