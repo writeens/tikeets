@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -13,7 +14,7 @@ const Ticket = ({ name, attendees, id }) => (
     </p>
     <p className="text-center">for</p>
     <div className="flex flex-col md:flex-row md:flex-wrap justify-center">
-      {attendees.map((item) => <p className=" self-center p-2 px-4 bg-blue-700 text-white rounded m-2" key={id}>{item}</p>)}
+      {attendees.map((item) => <p className=" self-center p-2 px-4 bg-blue-700 text-white rounded m-2" key={`${id}-${item}`}>{item}</p>)}
     </div>
     <div />
   </div>
@@ -71,7 +72,7 @@ const ViewTickets = () => {
           {usersArray.map((item) => (
             <Ticket
               key={item.id}
-              id={id}
+              id={item.id}
               name={item.name}
               attendees={item.attendees}
             />

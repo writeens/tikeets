@@ -116,7 +116,6 @@ const getEventTickets = async (eventId) => {
       id: shortid.generate(),
     };
   });
-  console.log(ticketData);
   return ticketData;
 };
 

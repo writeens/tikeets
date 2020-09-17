@@ -89,7 +89,7 @@ const SignInForm = () => {
             />
           </div>
         </div>
-        <div className="flex justify-center mt-16">
+        <div className="flex justify-center mt-4 md:mt-16">
           <button type="submit" className="rounded border-0 bg-blue-900 text-white py-2 px-8 cursor-pointer">Sign In</button>
         </div>
         <ToastContainer />

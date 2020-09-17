@@ -63,7 +63,7 @@ const SignUpForm = () => {
   }, [error]);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col py-8 md:py-0">
       <form method="post" onSubmit={formik.handleSubmit}>
         <div className=" text-blue-900  lg:flex-row flex-col flex mb-4 lg:mb-10">
           <div className="flex flex-col flex-1 lg:mr-6 lg:ml-6 mb-4 lg:mb-0">
@@ -113,7 +113,7 @@ const SignUpForm = () => {
             />
           </div>
         </div>
-        <div className="flex justify-center mt-16">
+        <div className="flex justify-center mt-4 md:mt-16">
           <button type="submit" className="rounded border-0 bg-blue-900 text-white py-2 px-8 cursor-pointer">Get Started</button>
         </div>
         <ToastContainer />
