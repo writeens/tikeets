@@ -24,6 +24,9 @@ it('renders correctly', () => {
 
   expect(queryByTestId('sign-in-email')).toBeTruthy();
   expect(queryByPlaceholderText('Enter Email Address')).toBeTruthy();
+
+  expect(queryByTestId('sign-in-password')).toBeTruthy();
+  expect(queryByPlaceholderText('Enter Password')).toBeTruthy();
 });
 
 describe('Email Input Value', () => {

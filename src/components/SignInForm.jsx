@@ -78,6 +78,7 @@ const SignInForm = () => {
           <div className="flex flex-col flex-1 lg:mr-6 lg:ml-6 mb-10">
             <label htmlFor="lastName" className=" font-medium">Password</label>
             <input
+              data-testid="sign-in-password"
               type="password"
               onChange={formik.handleChange}
               placeholder="Enter Password"
