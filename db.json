@@ -37,18 +37,6 @@
       "location": "Online Event"
     },
     {
-      "id": "3",
-      "image": "https://images.unsplash.com/photo-1574309122960-34273ebda15e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-      "date": "Wed, 18th Sep 2020",
-      "title": "Throwing a Confetti Party",
-      "time": "06:45 PM WAT",
-      "organizer": "Adewusi Victor",
-      "link": "https://www.victordid.com",
-      "shortDesc": "Welcome to the biggest and most exciting virtual event of the year! Join us at Manifest 2020 and bring your entire team. It's 100% Free!",
-      "longDesc": "MDC's 3rd Annual Convention in Las Vegas, NV was a wild success! We gave away tens of thousands of dollars, had empowering guest speakers like Bob Proctor & Les Brown, and gave recognition to those who continue to make My Daily Choice a success. The event will be remembered as one of the greatest conventions we've ever hosted. However, this year, we are manifesting an event that will be unlike anything we've ever done before. You won't want to miss it!",
-      "location": "Online Event"
-    },
-    {
       "id": "4",
       "image": "https://images.unsplash.com/photo-1580088370256-15bf902e289c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
       "date": "Wed, 18th Sep 2020",
@@ -71,6 +59,42 @@
       "shortDesc": "Welcome to the biggest and most exciting virtual event of the year! Join us at Manifest 2020 and bring your entire team. It's 100% Free!",
       "longDesc": "MDC's 3rd Annual Convention in Las Vegas, NV was a wild success! We gave away tens of thousands of dollars, had empowering guest speakers like Bob Proctor & Les Brown, and gave recognition to those who continue to make My Daily Choice a success. The event will be remembered as one of the greatest conventions we've ever hosted. However, this year, we are manifesting an event that will be unlike anything we've ever done before. You won't want to miss it!",
       "location": "Online Event"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+      "date": "Fri 18 Sep 2020",
+      "title": "Developer Meeting",
+      "time": "12:00 PM WAT",
+      "organizer": "Oluwaseyi Oyefeso",
+      "link": "https://pace.africa",
+      "shortDesc": "A gathering of front end developers to share ideas and opinions",
+      "longDesc": "The instructor will teach basic framework, design elements, navigation tools, and much more! By the end of the 2 hours, you will have developed your very own website! No prior experience is needed. Have fun!",
+      "location": "Bulb HQ",
+      "id": "-j9wAvecJ"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1549813069-f95e44d7f498?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "date": "Fri 18 Sep 2020",
+      "title": "Facebook Developer Meetups",
+      "time": "10:00 AM WAT",
+      "organizer": "Dora Akindele",
+      "link": "https://facebook.com",
+      "shortDesc": "A gathering of front end developers to share ideas and opinions",
+      "longDesc": "The instructor will teach basic framework, design elements, navigation tools, and much more! By the end of the 2 hours, you will have developed your very own website! No prior experience is needed. Have fun!",
+      "location": "Online Event",
+      "id": "7csMVI7z6"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "date": "Mon 21 Sep 2020",
+      "title": "Beach Hangout",
+      "time": "10:00 AM WAT",
+      "organizer": "Oluwaseyi Oyefeso",
+      "link": "https://pace.africa",
+      "shortDesc": "Hangout with the Bulb Team",
+      "longDesc": "Our meetings are fun, friendly and structured. They give you ​an opportunity to ​connect with, ​present​ ​to ​and ​educate our members and guests​ about who you are, what you do and why you’re different​. You can also actively ​request introductions to specific people you'd like to meet or for general referrals. You will be accessing the extended networks of our members - potentially thousands of people.\n\nSince Covid-19, like everyone, we have moved our meetings online. Previously we met in person at the Brighton Yacht Club over breakfast (check out our great video above!). Whilst we can't wait to get back there and enjoy our beachside breakfast views, our Zoom meetings still have the same amazing buzz with loads of referrals, business and 1:1 meetings happening every week.. Now more than ever you can't afford to be losing connections you would have normally made face to face. BNI has embraced online networking, so come and join us!",
+      "location": "Oniru Beach",
+      "id": "MnQlZm96_"
     }
   ],
   "users": [
@@ -79,18 +103,46 @@
       "lastName": "Adewusi",
       "email": "adewusi.victorg@gmail.com",
       "password": "Password1",
-      "uid": "oO7Wltfaq",
+      "id": "oO7Wltfaq",
       "role": "admin",
-      "id": 1
+      "tickets": []
     },
     {
       "firstName": "John",
       "lastName": "Snow",
       "email": "johnsnow@gmail.com",
       "password": "Password1",
-      "uid": "YTMUPDzgC",
+      "id": "YTMUPDzgC",
       "role": "user",
-      "id": 2
+      "tickets": [
+        {
+          "attendees": [
+            "john@pace.africa",
+            "seyi@pace.africa"
+          ],
+          "event": "0"
+        }
+      ]
+    },
+    {
+      "firstName": "Tega",
+      "lastName": "Odiavbara",
+      "email": "tega@pace.africa",
+      "password": "Password1",
+      "tickets": [
+        {
+          "attendees": [
+            "john@pace.africa",
+            "seyi@pace.africa",
+            "segun@pace.africa",
+            "gideon@pace.africa",
+            "ope@pace.africa"
+          ],
+          "event": "0"
+        }
+      ],
+      "id": "yk50HLB1v",
+      "role": "user"
     }
   ]
 }

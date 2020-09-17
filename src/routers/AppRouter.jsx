@@ -6,6 +6,7 @@ import EventDetail from '../components/EventDetail';
 import ReserveTicket from '../components/ReserveTicket';
 import ReservedEvents from '../components/ReservedEvents';
 import CreateEvent from '../components/CreateEvent';
+import ViewTickets from '../components/ViewTickets';
 
 // Routes Config
 const routes = [
@@ -37,6 +38,11 @@ const routes = [
   {
     routePath: '/event/:id/reserve',
     routeComponent: ReserveTicket,
+    exact: true,
+  },
+  {
+    routePath: '/event/:id/tickets',
+    routeComponent: ViewTickets,
     exact: true,
   },
 ];

@@ -1,9 +1,60 @@
-import { upcomingEvents } from '../events';
+import dayjs from 'dayjs';
+import shortid from 'shortid';
 import {
   FETCH_EVENTS_REQUEST,
   FETCH_EVENTS_SUCCESS,
   FETCH_EVENTS_FAIL,
+  CREATE_EVENT_REQUEST,
+  CREATE_EVENT_SUCCESS,
+  CREATE_EVENT_FAIL,
+  CLEAR_CREATE_DATA,
 } from './constants';
+
+/** CREATE EVENT ACTIONS */
+const createEventRequest = () => ({
+  type: CREATE_EVENT_REQUEST,
+});
+const createEventSuccess = (event) => ({
+  type: CREATE_EVENT_SUCCESS,
+  payload: event,
+});
+const createEventFail = (e) => ({
+  type: CREATE_EVENT_FAIL,
+  payload: e,
+});
+
+/** CREATE EVENT THUNK */
+const startCreateEvent = (event) => async (dispatch) => {
+  dispatch(createEventRequest());
+  try {
+    const eventId = shortid.generate();
+    const date = dayjs(event.date).format('ddd D MMM YYYY');
+    const time = `${dayjs(`${event.date} ${event.time}`).format('hh:mm A')} WAT`;
+    const updatedEvent = {
+      ...event,
+      id: eventId,
+      date,
+      time,
+    };
+    const url = 'http://localhost:8000/events';
+    await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedEvent),
+    });
+
+    dispatch(createEventSuccess(updatedEvent));
+  } catch (e) {
+    dispatch(createEventFail({ message: 'Unable to create event', code: 'events/create-fail' }));
+  }
+};
+
+/** Clear Create Data */
+const clearCreateData = () => ({
+  type: CLEAR_CREATE_DATA,
+});
 
 /** FETCH EVENTS ACTIONS */
 const fetchEventsRequest = () => ({
@@ -18,7 +69,7 @@ const fetchEventsFail = (e) => ({
   payload: e,
 });
 
-/** Action with Redux Thunk */
+/** FETCH EVENTS THUNK */
 const startFetchEvents = () => async (dispatch) => {
   dispatch(fetchEventsRequest());
   try {
@@ -42,6 +93,12 @@ const defaultEventsState = {
     error: false,
     loading: false,
     data: [],
+    errorData: null,
+  },
+  create: {
+    error: false,
+    loading: false,
+    data: {},
     errorData: null,
   },
 };
@@ -77,6 +134,46 @@ const eventsReducer = (state = defaultEventsState, action) => {
           errorData: action.payload,
         },
       };
+    case CREATE_EVENT_REQUEST:
+      return {
+        ...state,
+        create: {
+          error: false,
+          loading: true,
+          data: {},
+          errorData: null,
+        },
+      };
+    case CREATE_EVENT_SUCCESS:
+      return {
+        ...state,
+        create: {
+          error: false,
+          loading: false,
+          data: action.payload,
+          errorData: null,
+        },
+      };
+    case CREATE_EVENT_FAIL:
+      return {
+        ...state,
+        create: {
+          ...state.create,
+          error: true,
+          loading: false,
+          errorData: action.payload,
+        },
+      };
+    case CLEAR_CREATE_DATA:
+      return {
+        ...state,
+        create: {
+          error: false,
+          loading: false,
+          data: {},
+          errorData: null,
+        },
+      };
     default:
       return state;
   }
@@ -84,5 +181,7 @@ const eventsReducer = (state = defaultEventsState, action) => {
 
 export {
   eventsReducer,
+  clearCreateData,
   startFetchEvents,
+  startCreateEvent,
 };

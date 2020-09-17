@@ -1,12 +1,17 @@
+import { useFormik } from 'formik';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import { reserveTickets } from '../helpers/api';
 import { range } from '../helpers/helpers';
-import { startFetchEvents } from '../redux/events';
+import { refreshAuth } from '../redux/auth';
+import { startFetchEvents, startReserveTickets } from '../redux/events';
 import Sidebar from './Sidebar';
 
 const ReserveTicket = () => {
   const events = useSelector((state) => state.events.fetch.data);
+  const { uid, role } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -18,6 +23,49 @@ const ReserveTicket = () => {
   const [shortDesc, setShortDesc] = useState('');
   const [location, setLocation] = useState('');
   const [inputBoxes, setInputBoxes] = useState(1);
+
+  /** Handle Reserve Tickets/API call to email service and BE */
+  const handleReserveTickets = async (values, { resetForm }) => {
+    const event = events.find((item) => item.id === id);
+    const emails = Object.values(values);
+    const ticketData = {
+      id: event.id,
+      attendees: emails.filter((item) => item),
+      uid,
+    };
+
+    try {
+      // Reserve Tickets
+      await reserveTickets(ticketData);
+
+      // Notify User
+      toast.success(`${ticketData.attendees.length} ticket(s) reserved`, {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      resetForm({ values: '' });
+
+      dispatch(refreshAuth());
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      email1: '',
+      email2: '',
+      email3: '',
+      email4: '',
+      email5: '',
+    },
+    onSubmit: handleReserveTickets,
+  });
 
   useEffect(() => {
     if (events.length <= 0) {
@@ -45,11 +93,6 @@ const ReserveTicket = () => {
     setInputBoxes(value);
   };
 
-  /** Handle Reserve Tickets/API call to email service and BE */
-  const handleReserveTickets = async () => {
-
-  };
-
   useEffect(() => {
     getEventDetails();
   }, [events]);
@@ -57,9 +100,8 @@ const ReserveTicket = () => {
   const renderInputBoxes = () => {
     const inputArray = range(1, inputBoxes);
 
-    console.log(inputArray);
     return (
-      <form className="flex flex-col">
+      <form className="flex flex-col" onSubmit={formik.handleSubmit}>
         {inputArray.map((item) => (
           <div key={item} className="mb-2 flex-col flex">
             <label className="text-xs mb-2">{`Email Address of Attendee # ${item}`}</label>
@@ -67,13 +109,15 @@ const ReserveTicket = () => {
               className="text-xs placeholder-gray-500 pl-4 py-2 focus:outline-none"
               type="email"
               placeholder="Email Address"
+              name={`email${item}`}
+              value={formik.values[`email${item}`]}
+              onChange={formik.handleChange}
               required
             />
           </div>
         ))}
         <button
           type="submit"
-          onClick={handleReserveTickets}
           className="rounded text-sm border-0 bg-blue-900 text-white py-2 px-8 self-end cursor-pointer mt-12"
         >
           Reserve
@@ -86,6 +130,7 @@ const ReserveTicket = () => {
   return (
     <div className="text-blue-900 relative bg-gray-100 flex flex-col min-h-screen">
       <Sidebar />
+      <ToastContainer />
       <div className="md:mx-32 lg:mx-64 flex-col flex">
         <img style={{ height: '300px', minHeight: '300px' }} className="md:w-1/2 self-center mb-3" src={bg} alt="event" />
         <div className="flex flex-col bg-white p-6 shadow-xl rounded">

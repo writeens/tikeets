@@ -35,7 +35,6 @@ const SignUpForm = () => {
   }, [uid]);
 
   useEffect(() => {
-    console.log(error);
     if (error) {
       switch (errorData.code) {
         case 'auth/email-exists':
@@ -73,7 +72,7 @@ const SignUpForm = () => {
               type="text"
               onChange={formik.handleChange}
               name="firstName"
-              className="border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
+              className="bg-transparent border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
               value={formik.values.firstName}
               required
             />
@@ -84,7 +83,7 @@ const SignUpForm = () => {
               type="text"
               onChange={formik.handleChange}
               name="lastName"
-              className="border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
+              className="bg-transparent border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
               value={formik.values.lastName}
               required
             />
@@ -97,7 +96,7 @@ const SignUpForm = () => {
               type="text"
               onChange={formik.handleChange}
               name="email"
-              className="border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
+              className="bg-transparent border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
               value={formik.values.email}
               required
             />
@@ -108,7 +107,7 @@ const SignUpForm = () => {
               type="password"
               onChange={formik.handleChange}
               name="password"
-              className="border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
+              className="bg-transparent border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
               value={formik.values.password}
               required
             />

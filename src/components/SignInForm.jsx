@@ -68,7 +68,7 @@ const SignInForm = () => {
               type="text"
               onChange={formik.handleChange}
               name="email"
-              className="border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
+              className=" bg-transparent border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
               value={formik.values.email}
               required
             />
@@ -79,7 +79,7 @@ const SignInForm = () => {
               type="password"
               onChange={formik.handleChange}
               name="password"
-              className="border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
+              className="bg-transparent border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
               value={formik.values.password}
               required
             />

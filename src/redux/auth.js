@@ -29,6 +29,7 @@ const signUpFail = (e) => ({
 const startSignUp = (user) => async (dispatch) => {
   dispatch(signUpRequest());
   try {
+    user.tickets = [];
     const url = 'http://localhost:8000/users';
     const response = await fetch(url, {
       method: 'GET',
@@ -46,8 +47,8 @@ const startSignUp = (user) => async (dispatch) => {
 
     const newUser = user;
     // Generate UID for user
-    const uid = shortid.generate();
-    newUser.uid = uid;
+    const id = shortid.generate();
+    newUser.id = id;
     newUser.role = 'user';
 
     await fetch(url, {
@@ -133,6 +134,20 @@ const startSignOut = () => async (dispatch) => {
 const clearError = (e) => ({
   type: CLEAR_ERROR,
 });
+
+const refreshAuth = () => async (dispatch, state) => {
+  const { uid } = state().auth;
+  const url = `http://localhost:8000/users/${uid}`;
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const user = await response.json();
+  dispatch(signInSuccess(user));
+};
+
 const defaultAuthState = {
   uid: '',
   email: '',
@@ -142,6 +157,7 @@ const defaultAuthState = {
   error: false,
   errorData: '',
   role: '',
+  tickets: [],
 };
 
 const authReducer = (state = defaultAuthState, action) => {
@@ -155,14 +171,16 @@ const authReducer = (state = defaultAuthState, action) => {
         loading: true,
         error: false,
         errorData: '',
+        tickets: [],
       };
     case SIGN_UP_SUCCESS:
       return {
-        uid: action.payload.uid,
+        uid: action.payload.id,
         email: action.payload.email,
         firstName: action.payload.firstName,
         lastName: action.payload.lastName,
         role: action.payload.role,
+        tickets: action.payload.tickets,
         loading: false,
         error: false,
         errorData: '',
@@ -174,6 +192,7 @@ const authReducer = (state = defaultAuthState, action) => {
         firstName: '',
         lastName: '',
         loading: false,
+        tickets: [],
         error: true,
         errorData: action.payload,
       };
@@ -189,6 +208,7 @@ const authReducer = (state = defaultAuthState, action) => {
         firstName: '',
         lastName: '',
         loading: false,
+        tickets: [],
         error: false,
         errorData: '',
       };
@@ -206,16 +226,18 @@ const authReducer = (state = defaultAuthState, action) => {
         firstName: '',
         lastName: '',
         loading: true,
+        tickets: [],
         error: false,
         errorData: '',
       };
     case SIGN_IN_SUCCESS:
       return {
-        uid: action.payload.uid,
+        uid: action.payload.id,
         email: action.payload.email,
         firstName: action.payload.firstName,
         lastName: action.payload.lastName,
         role: action.payload.role,
+        tickets: action.payload.tickets,
         loading: false,
         error: false,
         errorData: '',
@@ -226,6 +248,7 @@ const authReducer = (state = defaultAuthState, action) => {
         email: '',
         firstName: '',
         lastName: '',
+        tickets: [],
         loading: false,
         error: true,
         errorData: action.payload,
@@ -246,5 +269,6 @@ export {
   startSignOut,
   startSignIn,
   clearError,
+  refreshAuth,
   authReducer,
 };

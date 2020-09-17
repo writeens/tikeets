@@ -1,13 +1,17 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+/* eslint-disable react/prop-types */
+import React, {
+  Fragment, useEffect, useState,
+} from 'react';
+import { connect, useSelector } from 'react-redux';
 import EventCard from './EventCard';
 import Sidebar from './Sidebar';
 import Loader from './Loader';
 import { startFetchEvents } from '../redux/events';
 
-const ReservedEvents = ({ fetchEvents, events, eventsFetchLoading }) => {
+const ReservedEvents = ({ fetchEvents, events = [], eventsFetchLoading }) => {
+  const { tickets } = useSelector((state) => state.auth);
   // State
-  const [allUpcomingEvents, setAllUpcomingEvents] = useState([]);
+  const [allReservedEvents, setAllReservedEvents] = useState([]);
 
   /** Handler to fetch events */
   const getEvents = async () => {
@@ -23,9 +27,12 @@ const ReservedEvents = ({ fetchEvents, events, eventsFetchLoading }) => {
   // Update State Accordingly
   useEffect(() => {
     if (events) {
-      return setAllUpcomingEvents(events);
+      const reservedEventsId = tickets.map((item) => item.event);
+      const reservedEventsDetails = events.filter((item) => reservedEventsId.includes(item.id));
+      // Update View
+      return setAllReservedEvents(reservedEventsDetails);
     }
-    return setAllUpcomingEvents([]);
+    return setAllReservedEvents([]);
   }, [events]);
 
   const renderContent = () => {
@@ -35,7 +42,7 @@ const ReservedEvents = ({ fetchEvents, events, eventsFetchLoading }) => {
 
     return (
       <Fragment>
-        {allUpcomingEvents.map((item) => (
+        {allReservedEvents.map((item) => (
           <EventCard
             key={item.id}
             id={item.id}
