@@ -1,8 +1,11 @@
 import shortid from 'shortid';
+import { getURL } from './helpers';
+
+const baseURL = getURL();
 
 /** RESERVE TICKETS */
 const reserveTickets = async (data) => {
-  const url = `http://localhost:8000/users/${data.uid}/ticket`;
+  const url = `${baseURL}/users/${data.uid}/ticket`;
 
   // Get current tickets
   const response = await fetch(url);
@@ -50,7 +53,7 @@ const reserveTickets = async (data) => {
 
 /** CANCEl TICKETS */
 const cancelTickets = async (uid, eventId) => {
-  const url = `http://localhost:8000/users/${uid}/ticket`;
+  const url = `${baseURL}/users/${uid}/ticket`;
 
   // Get current tickets
   const response = await fetch(url);
@@ -74,7 +77,7 @@ const cancelTickets = async (uid, eventId) => {
 
 /** DELETE EVENT */
 const deleteEvent = async (eventId) => {
-  const url = `http://localhost:8000/events/${eventId}`;
+  const url = `${baseURL}/events/${eventId}`;
   await fetch(url, {
     method: 'DELETE',
     headers: {
@@ -85,7 +88,7 @@ const deleteEvent = async (eventId) => {
 
 /** GET EVENT TICKETS */
 const getEventTickets = async (eventId) => {
-  const url = 'http://localhost:8000/users';
+  const url = `${baseURL}/users`;
   const response = await fetch(url, {
     method: 'GET',
     headers: {

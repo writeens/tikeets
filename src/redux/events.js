@@ -9,6 +9,9 @@ import {
   CREATE_EVENT_FAIL,
   CLEAR_CREATE_DATA,
 } from './constants';
+import { getURL } from '../helpers/helpers.js';
+
+const baseURL = getURL();
 
 /** CREATE EVENT ACTIONS */
 const createEventRequest = () => ({
@@ -36,7 +39,7 @@ const startCreateEvent = (event) => async (dispatch) => {
       date,
       time,
     };
-    const url = 'http://localhost:8000/events';
+    const url = `${baseURL}/events`;
     await fetch(url, {
       method: 'POST',
       headers: {
@@ -74,7 +77,7 @@ const startFetchEvents = () => async (dispatch) => {
   dispatch(fetchEventsRequest());
   try {
     // Mock API call
-    const response = await fetch('http://localhost:8000/events', {
+    const response = await fetch(`${baseURL}/events`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

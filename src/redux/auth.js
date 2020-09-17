@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import shortid from 'shortid';
+import { getURL } from '../helpers/helpers';
 import {
   SIGN_IN_REQUEST,
   SIGN_IN_SUCCESS,
@@ -12,6 +13,8 @@ import {
   SIGN_OUT_FAIL,
   CLEAR_ERROR,
 } from './constants';
+
+const baseURL = getURL();
 
 /** SIGN UP ACTIONS */
 const signUpRequest = () => ({
@@ -31,7 +34,7 @@ const startSignUp = (user) => async (dispatch) => {
   dispatch(signUpRequest());
   try {
     user.tickets = [];
-    const url = 'http://localhost:8000/users';
+    const url = `${baseURL}/users`;
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -83,7 +86,7 @@ const signInFail = (e) => ({
 const startSignIn = (user) => async (dispatch) => {
   dispatch(signInRequest());
   try {
-    const url = 'http://localhost:8000/users';
+    const url = `${baseURL}/users`;
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -137,7 +140,7 @@ const clearError = () => ({
 
 const refreshAuth = () => async (dispatch, state) => {
   const { uid } = state().auth;
-  const url = `http://localhost:8000/users/${uid}`;
+  const url = `${baseURL}/users/${uid}`;
   const response = await fetch(url, {
     method: 'GET',
     headers: {

@@ -8,4 +8,12 @@ const range = (start, stop, step = 1) => {
   return data;
 };
 
-export default range;
+const getURL = () => {
+  const env = process.env.NODE_ENV;
+  if (env === 'development') {
+    return 'http://localhost:8000';
+  }
+  return 'https://my-json-server.typicode.com/writeens/tikeets';
+};
+
+export { getURL, range as default };
