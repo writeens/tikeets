@@ -20,6 +20,7 @@ module.exports = {
   ],
   rules: {
     'jsx-a11y/label-has-associated-control': 0,
-    'react/jsx-fragments': 0
+    'react/jsx-fragments': 0,
+    'react/jsx-filename-extension': 0
   },
 };

@@ -65,9 +65,11 @@ const SignInForm = () => {
           <div className="flex flex-col flex-1 lg:mr-6 lg:ml-6 mb-10">
             <label htmlFor="firstName" className=" font-medium">Email</label>
             <input
+              data-testid="sign-in-email"
               type="text"
               onChange={formik.handleChange}
               name="email"
+              placeholder="Enter Email Address"
               className=" bg-transparent border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
               value={formik.values.email}
               required
@@ -78,6 +80,7 @@ const SignInForm = () => {
             <input
               type="password"
               onChange={formik.handleChange}
+              placeholder="Enter Password"
               name="password"
               className="bg-transparent border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
               value={formik.values.password}

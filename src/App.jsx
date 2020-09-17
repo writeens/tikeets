@@ -10,14 +10,13 @@ const { store, persistor } = configureStore();
 
 function App() {
   return (
-    <BrowserRouter>
-      <Provider store={store}>
+    <Provider store={store}>
+      <BrowserRouter>
         <PersistGate persistor={persistor}>
           <AppRouter />
         </PersistGate>
-
-      </Provider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
