@@ -1,5 +1,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/writeens/tikeets/badge.svg?branch=master)](https://coveralls.io/github/writeens/tikeets?branch=master)
 
+[![Build Status](https://travis-ci.com/writeens/tikeets.svg?branch=master)](https://travis-ci.com/writeens/tikeets)
 
 ## Available Scripts
 

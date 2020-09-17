@@ -34,6 +34,7 @@ const CreateEvent = () => {
   // On Mount Clear Data Object
   useEffect(() => {
     dispatch(clearCreateData());
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -49,6 +50,7 @@ const CreateEvent = () => {
         progress: undefined,
       });
     }
+    // eslint-disable-next-line
   }, [data]);
   return (
     <div className="text-blue-900 bg-gray-100 flex flex-col min-h-screen">

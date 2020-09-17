@@ -23,6 +23,7 @@ module.exports = {
     'react/jsx-fragments': 0,
     'react/jsx-filename-extension': 0,
     'react/prop-types': 0,
-    'consistent-return': 0
+    'consistent-return': 0,
+    'react-hooks/exhaustive-deps': 0
   },
 };

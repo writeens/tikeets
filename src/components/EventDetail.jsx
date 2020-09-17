@@ -98,10 +98,12 @@ const EventDetail = () => {
 
   useEffect(() => {
     dispatch(startFetchEvents());
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     getEventDetails();
+    // eslint-disable-next-line
   }, [id, events]);
 
   useEffect(() => {
@@ -112,6 +114,7 @@ const EventDetail = () => {
       }
       return setShowCancelButton(false);
     }
+    // eslint-disable-next-line
   }, [tickets, events]);
 
   const renderTickets = () => {

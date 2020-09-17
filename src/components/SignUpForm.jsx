@@ -32,6 +32,7 @@ const SignUpForm = () => {
     if (uid && !loading && !error) {
       history.replace('/home');
     }
+    // eslint-disable-next-line
   }, [uid]);
 
   useEffect(() => {
@@ -60,6 +61,7 @@ const SignUpForm = () => {
           });
       }
     }
+    // eslint-disable-next-line
   }, [error]);
 
   return (

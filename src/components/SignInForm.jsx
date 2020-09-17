@@ -51,12 +51,14 @@ const SignInForm = () => {
           });
       }
     }
+    // eslint-disable-next-line
   }, [error]);
 
   useEffect(() => {
     if (uid && !loading && !error) {
       history.replace('/home');
     }
+    // eslint-disable-next-line
   }, [uid]);
   return (
     <div className="flex flex-col">

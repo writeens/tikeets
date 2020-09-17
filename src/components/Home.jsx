@@ -18,6 +18,7 @@ const Home = ({ fetchEvents, events, eventsFetchLoading }) => {
   // On Mount, Fetch Events
   useEffect(() => {
     getEvents();
+    // eslint-disable-next-line
   }, []);
 
   // Listen for changes to events

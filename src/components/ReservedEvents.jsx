@@ -21,6 +21,7 @@ const ReservedEvents = ({ fetchEvents, events = [], eventsFetchLoading }) => {
   // On Mount, Fetch Events
   useEffect(() => {
     getEvents();
+    // eslint-disable-next-line
   }, []);
 
   // Listen for changes to events
@@ -33,6 +34,7 @@ const ReservedEvents = ({ fetchEvents, events = [], eventsFetchLoading }) => {
       return setAllReservedEvents(reservedEventsDetails);
     }
     return setAllReservedEvents([]);
+    // eslint-disable-next-line
   }, [events]);
 
   const renderContent = () => {

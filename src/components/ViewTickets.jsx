@@ -45,6 +45,7 @@ const ViewTickets = () => {
   useEffect(() => {
     dispatch(startFetchEvents());
     getTickets();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -52,6 +53,7 @@ const ViewTickets = () => {
       const event = events.find((item) => item.id === id);
       setTitle(event.title);
     }
+    // eslint-disable-next-line
   }, [events]);
 
   const renderTickets = () => {

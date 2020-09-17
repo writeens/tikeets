@@ -74,6 +74,7 @@ const ReserveTicket = () => {
     if (events.length <= 0) {
       dispatch(startFetchEvents());
     }
+    // eslint-disable-next-line
   }, []);
 
   /** Handler to get Event Details and Update local State */
@@ -90,9 +91,9 @@ const ReserveTicket = () => {
     const { value } = e.target;
     setInputBoxes(value);
   };
-
   useEffect(() => {
     getEventDetails();
+    // eslint-disable-next-line
   }, [events]);
 
   const renderInputBoxes = () => {
