@@ -69,7 +69,9 @@ const SignUpForm = () => {
           <div className="flex flex-col flex-1 lg:mr-6 lg:ml-6 mb-4 lg:mb-0">
             <label htmlFor="firstName" className=" font-medium">First Name</label>
             <input
+              data-testid="sign-up-firstname"
               type="text"
+              placeholder="First Name"
               onChange={formik.handleChange}
               name="firstName"
               className="bg-transparent border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
@@ -80,7 +82,9 @@ const SignUpForm = () => {
           <div className="flex flex-col flex-1 lg:mr-6 lg:ml-6 mb-4 lg:mb-0">
             <label htmlFor="lastName" className=" font-medium">Last Name</label>
             <input
+              data-testid="sign-up-lastname"
               type="text"
+              placeholder="Last Name"
               onChange={formik.handleChange}
               name="lastName"
               className="bg-transparent border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
@@ -91,9 +95,11 @@ const SignUpForm = () => {
         </div>
         <div className="text-blue-900  lg:flex-row flex-col flex mb-4 lg:mb-10">
           <div className="flex flex-col flex-1 lg:mr-6 lg:ml-6 mb-4 lg:mb-0">
-            <label htmlFor="firstName" className=" font-medium">Email</label>
+            <label htmlFor="email" className=" font-medium">Email</label>
             <input
+              data-testid="sign-up-email"
               type="text"
+              placeholder="Enter Email Address"
               onChange={formik.handleChange}
               name="email"
               className="bg-transparent border-0 border-b-2 border-blue-900 p-2 focus:outline-none"
@@ -102,9 +108,11 @@ const SignUpForm = () => {
             />
           </div>
           <div className="flex flex-col flex-1 lg:mr-6 lg:ml-6 mb-4 lg:mb-0">
-            <label htmlFor="lastName" className=" font-medium">Password</label>
+            <label htmlFor="password" className=" font-medium">Password</label>
             <input
+              data-testid="sign-up-password"
               type="password"
+              placeholder="Enter Password"
               onChange={formik.handleChange}
               name="password"
               className="bg-transparent border-0 border-b-2 border-blue-900 p-2 focus:outline-none"

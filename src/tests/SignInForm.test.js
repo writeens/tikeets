@@ -32,11 +32,21 @@ it('renders correctly', () => {
 describe('Email Input Value', () => {
   it('updates on change', () => {
     const { queryByPlaceholderText } = render(<ProviderSignInForm />);
-
-    const emailInput = queryByPlaceholderText('Enter Email Address');
+    const input = queryByPlaceholderText('Enter Email Address');
     act(() => {
-      fireEvent.change(emailInput, { target: { value: 'test' } });
+      fireEvent.change(input, { target: { value: 'test' } });
     });
-    expect(emailInput.value).toBe('test');
+    expect(input.value).toBe('test');
+  });
+});
+
+describe('Password Input Value', () => {
+  it('updates on change', () => {
+    const { queryByPlaceholderText } = render(<ProviderSignInForm />);
+    const input = queryByPlaceholderText('Enter Password');
+    act(() => {
+      fireEvent.change(input, { target: { value: 'test' } });
+    });
+    expect(input.value).toBe('test');
   });
 });
