@@ -101,33 +101,16 @@
     {
       "firstName": "Victor",
       "lastName": "Adewusi",
-      "email": "adewusi.victorg@gmail.com",
+      "email": "victor@tikeets.com",
       "password": "Password1",
       "id": "oO7Wltfaq",
       "role": "admin",
       "tickets": []
     },
     {
-      "firstName": "John",
-      "lastName": "Snow",
-      "email": "johnsnow@gmail.com",
-      "password": "Password1",
-      "id": "YTMUPDzgC",
-      "role": "user",
-      "tickets": [
-        {
-          "attendees": [
-            "john@pace.africa",
-            "seyi@pace.africa"
-          ],
-          "event": "0"
-        }
-      ]
-    },
-    {
       "firstName": "Tega",
       "lastName": "Odiavbara",
-      "email": "tega@pace.africa",
+      "email": "tega@tikeets.com",
       "password": "Password1",
       "tickets": [
         {

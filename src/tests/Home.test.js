@@ -17,7 +17,7 @@ const ProviderHome = () => (
 );
 
 it('renders correctly', () => {
-  const { queryByTestId, queryByPlaceholderText } = render(
+  const { queryByTestId } = render(
     <ProviderHome />,
   );
 

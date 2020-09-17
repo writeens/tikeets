@@ -1,10 +1,8 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import {
-  fireEvent, render,
-} from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { act } from 'react-dom/test-utils';
+import { BrowserRouter } from 'react-router-dom';
 import configureStore from '../redux/configureStore';
 import Sidebar from '../components/Sidebar';
 
@@ -12,7 +10,9 @@ const { store } = configureStore();
 
 const ProviderSidebar = () => (
   <Provider store={store}>
-    <Sidebar />
+    <BrowserRouter>
+      <Sidebar />
+    </BrowserRouter>
   </Provider>
 );
 
