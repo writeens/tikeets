@@ -1,11 +1,10 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import {
-  fireEvent, queryAllByPlaceholderText, render, screen,
+  fireEvent, render,
 } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { act } from 'react-dom/test-utils';
-import Home from '../components/Home';
 import configureStore from '../redux/configureStore';
 import SignInForm from '../components/SignInForm';
 

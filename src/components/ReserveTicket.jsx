@@ -1,27 +1,22 @@
 import { useFormik } from 'formik';
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { reserveTickets } from '../helpers/api';
-import { range } from '../helpers/helpers';
+import range from '../helpers/helpers';
 import { refreshAuth } from '../redux/auth';
-import { startFetchEvents, startReserveTickets } from '../redux/events';
+import { startFetchEvents } from '../redux/events';
 import Sidebar from './Sidebar';
 
 const ReserveTicket = () => {
   const events = useSelector((state) => state.events.fetch.data);
-  const { uid, role } = useSelector((state) => state.auth);
+  const { uid } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { id } = useParams();
 
   const [bg, setBg] = useState(null);
   const [title, setTitle] = useState('');
-  const [organizer, setOrganizer] = useState('');
-  const [eventLink, setEventLink] = useState('');
-  const [longDesc, setLongDesc] = useState('');
-  const [shortDesc, setShortDesc] = useState('');
-  const [location, setLocation] = useState('');
   const [inputBoxes, setInputBoxes] = useState(1);
 
   /** Handle Reserve Tickets/API call to email service and BE */
@@ -52,7 +47,15 @@ const ReserveTicket = () => {
 
       dispatch(refreshAuth());
     } catch (e) {
-      console.log(e);
+      toast.warn('Unable to reserve tickets', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -79,11 +82,6 @@ const ReserveTicket = () => {
     if (event) {
       setBg(event.image);
       setTitle(event.title);
-      setOrganizer(event.organizer);
-      setEventLink(event.link);
-      setLongDesc(event.longDesc);
-      setShortDesc(event.shortDesc);
-      setLocation(event.location);
     }
   };
 

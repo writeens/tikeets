@@ -8,6 +8,4 @@ const range = (start, stop, step = 1) => {
   return data;
 };
 
-export {
-  range,
-};
+export default range;

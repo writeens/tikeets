@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import shortid from 'shortid';
 import {
   SIGN_IN_REQUEST,
@@ -94,7 +95,6 @@ const startSignIn = (user) => async (dispatch) => {
     const newUser = users.find((item) => item.email === user.email);
 
     if (!newUser) {
-      console.log('object');
       return dispatch(signInFail({ message: 'Unable to sign in', code: 'auth/email-does-not-exist' }));
     }
 
@@ -131,7 +131,7 @@ const startSignOut = () => async (dispatch) => {
   }
 };
 
-const clearError = (e) => ({
+const clearError = () => ({
   type: CLEAR_ERROR,
 });
 

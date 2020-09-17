@@ -38,7 +38,7 @@ const ViewTickets = () => {
     if (users.length <= 0) {
       return setShowMessage(true);
     }
-    setUsersArray(users);
+    return setUsersArray(users);
   };
 
   // On Mount
@@ -65,7 +65,6 @@ const ViewTickets = () => {
       );
     }
 
-    console.log(usersArray);
     if (!loading && !showMessage && usersArray.length > 0) {
       return (
         <Fragment>
@@ -80,6 +79,7 @@ const ViewTickets = () => {
         </Fragment>
       );
     }
+    return null;
   };
 
   return (

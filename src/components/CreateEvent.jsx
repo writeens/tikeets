@@ -1,17 +1,15 @@
 import { useFormik } from 'formik';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { clearCreateData, startCreateEvent } from '../redux/events';
 import Sidebar from './Sidebar';
 
 const CreateEvent = () => {
   const {
-    loading, data, error, errorData,
+    loading, data, error,
   } = useSelector((state) => state.events.create);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   /** Submit to Redux */
   const handleSubmit = (values, { resetForm }) => {

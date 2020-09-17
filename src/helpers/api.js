@@ -99,7 +99,8 @@ const getEventTickets = async (eventId) => {
 
   const usersWhoReservedThisEvent = users.filter((item) => {
     const { tickets } = item;
-    const indexOfReservedTicketForThisEvent = tickets.findIndex((ticket) => ticket.event === eventId);
+    const indexOfReservedTicketForThisEvent = tickets
+      .findIndex((ticket) => ticket.event === eventId);
     if (indexOfReservedTicketForThisEvent === -1) {
       return false;
     }
