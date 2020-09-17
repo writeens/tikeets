@@ -56,7 +56,7 @@ const Home = ({ fetchEvents, events, eventsFetchLoading }) => {
       <Sidebar />
       <div className="md:mx-20 mx-4">
         <p>{`Hello, ${firstName}`}</p>
-        <p className="text-center font-semibold text-3xl mb-8">Upcoming Events</p>
+        <p data-testid="home-title" className="text-center font-semibold text-3xl mb-8">Upcoming Events</p>
         <div className="box-border flex flex-row flex-wrap justify-start">
           {renderContent()}
         </div>

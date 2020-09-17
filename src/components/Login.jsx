@@ -26,6 +26,7 @@ const Login = () => {
       <div className="md:w-3/5 flex-col flex justify-center">
         <div className="text-blue-900 flex self-center justify-around mt-4 md:w-1/2 w-full mb-10 md:mb-16">
           <button
+            data-testid="login-sign-in"
             type="button"
             className={`cursor-pointer ${!showSignUp ? 'border-blue-900' : 'border-white-900'} border-0 border-b-4 mx-3 pb-1 text-xl px-2 focus:outline-none`}
             onClick={() => toggleView('signIn')}
@@ -34,6 +35,7 @@ const Login = () => {
 
           </button>
           <button
+            data-testid="login-sign-up"
             type="button"
             className={`cursor-pointer ${showSignUp ? 'border-blue-900' : 'border-white-900'} border-0 border-b-4 mx-3 pb-1 text-xl px-2 focus:outline-none`}
             onClick={() => toggleView('signUp')}
