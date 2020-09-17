@@ -33,6 +33,7 @@ const Sidebar = () => {
   return (
     <div className=" relative h-16 flex bg-gray-100 justify-between px-4 py-3 mb-8">
       <p
+        data-testid="sidebar-logo"
         onClick={() => history.replace('/home')}
         className="flex font-bold cursor-pointer text-blue-900 text-2xl"
       >
