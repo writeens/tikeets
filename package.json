@@ -6,23 +6,32 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "autoprefixer": "^10.0.0",
     "clsx": "^1.1.1",
     "formik": "^2.1.5",
+    "json-server": "^0.16.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "react-toastify": "^6.0.8",
     "redux": "^4.0.5",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "shortid": "^2.2.15"
+    "shortid": "^2.2.15",
+    "tailwindcss": "^1.8.10"
   },
   "scripts": {
-    "start": "npm run build:css && react-scripts start",
+    "dev": "npm run build && run-p json-server start",
     "build": "npm run build:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:css": "postcss src/styles/tailwind.css -o src/styles/main.css"
+    "build:css": "postcss src/styles/tailwind.css -o src/styles/main.css",
+    "json-server": "json-server --watch db.json",
+    "start": "react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -40,13 +49,10 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.6",
-    "eslint-plugin-react-hooks": "^4.1.2",
-    "postcss-cli": "^7.1.2",
-    "tailwindcss": "^1.8.10"
+    "eslint-plugin-react-hooks": "^4.1.2"
   }
 }

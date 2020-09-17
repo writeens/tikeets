@@ -1,12 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import EventCard from './EventCard';
 import Sidebar from './Sidebar';
 import Loader from './Loader';
 import { startFetchEvents } from '../redux/events';
 
-const Home = ({ fetchEvents, events, eventsFetchLoading }) => {
-  const { firstName } = useSelector((state) => state.auth);
+const ReservedEvents = ({ fetchEvents, events, eventsFetchLoading }) => {
   // State
   const [allUpcomingEvents, setAllUpcomingEvents] = useState([]);
 
@@ -54,8 +53,7 @@ const Home = ({ fetchEvents, events, eventsFetchLoading }) => {
     <div className="text-blue-900 bg-gray-100 flex flex-col min-h-screen">
       <Sidebar />
       <div className="md:mx-20 mx-4">
-        <p>{`Hello, ${firstName}`}</p>
-        <p className="text-center font-semibold text-3xl mb-8">Upcoming Events</p>
+        <p className="text-center font-semibold text-3xl mb-8">Reserved Events</p>
         <div className="box-border flex flex-row flex-wrap justify-start">
           {renderContent()}
         </div>
@@ -73,5 +71,5 @@ const mapDispatchToProps = (dispatch) => ({
   fetchEvents: () => dispatch(startFetchEvents()),
 });
 
-const connectedHome = connect(mapStateToProps, mapDispatchToProps)(Home);
-export default connectedHome;
+const connectedReservedEvents = connect(mapStateToProps, mapDispatchToProps)(ReservedEvents);
+export default connectedReservedEvents;

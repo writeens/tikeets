@@ -11,6 +11,8 @@ const EventCard = ({
     history.push(`/event/${id}`);
   };
 
+  console.log(image);
+
   return (
     <div style={{ height: '300px' }} className="px-2 mb-8 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 ">
       <div

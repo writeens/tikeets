@@ -5,7 +5,7 @@ import {
   FETCH_EVENTS_FAIL,
 } from './constants';
 
-/** FETCH COMPLAINTS ACTIONS */
+/** FETCH EVENTS ACTIONS */
 const fetchEventsRequest = () => ({
   type: FETCH_EVENTS_REQUEST,
 });
@@ -19,14 +19,19 @@ const fetchEventsFail = (e) => ({
 });
 
 /** Action with Redux Thunk */
-const startFetchEvents = () => (dispatch) => {
-  console.log('Fetching Events');
+const startFetchEvents = () => async (dispatch) => {
   dispatch(fetchEventsRequest());
   try {
-    // Mimic API call
-    setTimeout(() => {
-      dispatch(fetchEventsSuccess(upcomingEvents));
-    }, 3000);
+    // Mock API call
+    const response = await fetch('http://localhost:8000/events', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const events = await response.json();
+
+    dispatch(fetchEventsSuccess(events));
   } catch (e) {
     dispatch(fetchEventsFail({ message: 'Unable to fetch events', code: 'events/fetch-fail' }));
   }

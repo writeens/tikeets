@@ -4,6 +4,8 @@ import Login from '../components/Login';
 import Home from '../components/Home';
 import EventDetail from '../components/EventDetail';
 import ReserveTicket from '../components/ReserveTicket';
+import ReservedEvents from '../components/ReservedEvents';
+import CreateEvent from '../components/CreateEvent';
 
 // Routes Config
 const routes = [
@@ -18,8 +20,18 @@ const routes = [
     exact: true,
   },
   {
+    routePath: '/myevents',
+    routeComponent: ReservedEvents,
+    exact: true,
+  },
+  {
     routePath: '/event/:id',
     routeComponent: EventDetail,
+    exact: true,
+  },
+  {
+    routePath: '/events/create',
+    routeComponent: CreateEvent,
     exact: true,
   },
   {

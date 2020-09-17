@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { clearError } from '../redux/auth';
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [showSignUp, setShowSignUp] = useState(false);
 
   /** Switch between sign in and sign up forms */
   const toggleView = (viewClicked) => {
     if (viewClicked === 'signUp') {
+      dispatch(clearError());
       return setShowSignUp(true);
     }
+    dispatch(clearError());
     return setShowSignUp(false);
   };
   return (

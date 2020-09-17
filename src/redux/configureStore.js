@@ -2,11 +2,23 @@ import {
   createStore, compose, combineReducers, applyMiddleware,
 } from 'redux';
 import thunk from 'redux-thunk';
+import storage from 'redux-persist/lib/storage';
+import { persistReducer, persistStore } from 'redux-persist';
+import { authReducer } from './auth';
 import { eventsReducer } from './events';
 
 const appReducer = combineReducers({
   events: eventsReducer,
+  auth: authReducer,
 });
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['auth'],
+};
+
+const persistedReducer = persistReducer(persistConfig, appReducer);
 
 export default () => {
   // Setup Enhancers
@@ -17,9 +29,11 @@ export default () => {
 
   // Create Store
   const store = createStore(
-    appReducer,
+    persistedReducer,
     composedEnhancers,
   );
 
-  return store;
+  const persistor = persistStore(store);
+
+  return { store, persistor };
 };
