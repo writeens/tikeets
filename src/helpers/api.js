@@ -5,7 +5,7 @@ const baseURL = getURL();
 
 /** RESERVE TICKETS */
 const reserveTickets = async (data) => {
-  const url = `${baseURL}/users/${data.uid}/ticket`;
+  const url = `${baseURL}/users/${data.uid}`;
 
   // Get current tickets
   const response = await fetch(url);
@@ -53,7 +53,7 @@ const reserveTickets = async (data) => {
 
 /** CANCEl TICKETS */
 const cancelTickets = async (uid, eventId) => {
-  const url = `${baseURL}/users/${uid}/ticket`;
+  const url = `${baseURL}/users/${uid}`;
 
   // Get current tickets
   const response = await fetch(url);

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom';
-import { startSignIn } from '../redux/auth';
+import { clearError, startSignIn } from '../redux/auth';
 
 const SignInForm = () => {
   const {
@@ -24,6 +24,12 @@ const SignInForm = () => {
     },
     onSubmit: handleSubmit,
   });
+
+  // On Mount Clear Error from Persisted State
+  useEffect(() => {
+    dispatch(clearError());
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (error) {

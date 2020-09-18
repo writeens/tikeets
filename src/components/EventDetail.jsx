@@ -61,6 +61,7 @@ const EventDetail = () => {
       });
 
       dispatch(refreshAuth());
+      setShowCancelButton(false);
     } catch (e) {
       console.log(e);
     }

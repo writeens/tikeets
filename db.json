@@ -112,18 +112,7 @@
       "lastName": "Odiavbara",
       "email": "tega@tikeets.com",
       "password": "Password1",
-      "tickets": [
-        {
-          "attendees": [
-            "john@pace.africa",
-            "seyi@pace.africa",
-            "segun@pace.africa",
-            "gideon@pace.africa",
-            "ope@pace.africa"
-          ],
-          "event": "0"
-        }
-      ],
+      "tickets": [],
       "id": "yk50HLB1v",
       "role": "user"
     }

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "bingely-b2b"
+  },
+  "targets": {
+    "bingely-b2b": {
+      "hosting": {
+        "tikeets": [
+          "tikeets"
+        ]
+      }
+    }
+  }
+}

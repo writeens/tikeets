@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import { startSignUp } from '../redux/auth';
+import { clearError, startSignUp } from '../redux/auth';
 
 const SignUpForm = () => {
   const {
@@ -27,6 +27,12 @@ const SignUpForm = () => {
     },
     onSubmit: handleSubmit,
   });
+
+  // On Mount Clear Error from Persisted State
+  useEffect(() => {
+    dispatch(clearError());
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (uid && !loading && !error) {

@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "build",
+    "site":"tikeets",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
