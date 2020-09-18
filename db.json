@@ -112,7 +112,14 @@
       "lastName": "Odiavbara",
       "email": "tega@tikeets.com",
       "password": "Password1",
-      "tickets": [],
+      "tickets": [
+        {
+          "attendees": [
+            "glove.adewusi@gmail.com"
+          ],
+          "event": "0"
+        }
+      ],
       "id": "yk50HLB1v",
       "role": "user"
     }

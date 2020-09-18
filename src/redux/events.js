@@ -9,7 +9,7 @@ import {
   CREATE_EVENT_FAIL,
   CLEAR_CREATE_DATA,
 } from './constants';
-import { getURL } from '../helpers/helpers.js';
+import { getURL } from '../helpers/helpers';
 
 const baseURL = getURL();
 
@@ -83,7 +83,8 @@ const startFetchEvents = () => async (dispatch) => {
         'Content-Type': 'application/json',
       },
     });
-    const events = await response.json();
+    let events = await response.json();
+    events = events.reverse();
 
     dispatch(fetchEventsSuccess(events));
   } catch (e) {
